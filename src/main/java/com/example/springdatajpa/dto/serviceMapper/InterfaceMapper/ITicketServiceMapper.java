@@ -1,12 +1,12 @@
 package com.example.springdatajpa.dto.serviceMapper.InterfaceMapper;
 
+import com.example.springdatajpa.dto.entities.TicketDTO;
+
 import java.util.List;
 
-import com.example.springdatajpa.dto.entities.BookOfficeDTO;
-
-public interface iBookOfficeServiceMapper {
-    List<BookOfficeDTO> viewBookOffice();
-    BookOfficeDTO addBookOffice(BookOfficeDTO bookOfficeDTO, Integer tripId);
-    BookOfficeDTO editBookOffice(BookOfficeDTO bookOfficeDTO, Integer officeId, Integer tripId);
-    void deleteBookOffice(Integer id);
+public interface ITicketServiceMapper {
+    List<TicketDTO> viewTicket();
+    TicketDTO addTicket(TicketDTO TicketDTO,String licensePlate, Integer tripId);
+    TicketDTO editTicket(TicketDTO TicketDTO, Integer ticketId,String licensePlate,  Integer tripId);
+    void deleteTicket(Integer Ticketid);
 }

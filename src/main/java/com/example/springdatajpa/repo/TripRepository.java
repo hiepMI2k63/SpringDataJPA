@@ -1,10 +1,9 @@
 package com.example.springdatajpa.repo;
 import com.example.springdatajpa.entities.*;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
-@Repository
-public interface TripRepository extends CrudRepository<Trip,Integer> {
-    
+public interface TripRepository extends JpaRepository<Trip,Integer> {
+  
 }

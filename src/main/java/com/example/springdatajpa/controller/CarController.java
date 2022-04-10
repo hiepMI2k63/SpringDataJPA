@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/car")
 public class CarController {
-    @Autowired
-    private ICarService carService;
-    @RequestMapping(value = "/savecar",method = RequestMethod.POST)
-    @ResponseBody
-    public Car saveCar(@RequestBody Car Car) {
-        Car CarResponse = carService.saveCar(Car);
-        return CarResponse;
-    }
+//    @Autowired
+//    private ICarService carService;
+//    @RequestMapping(value = "/savecar",method = RequestMethod.POST)
+//    @ResponseBody
+//    public Car saveCar(@RequestBody Car Car) {
+//        Car CarResponse = carService.saveCar(Car);
+//        return CarResponse;
+//    }
 
 }

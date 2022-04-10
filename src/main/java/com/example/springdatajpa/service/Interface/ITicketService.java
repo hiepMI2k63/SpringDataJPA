@@ -1,12 +1,16 @@
 package com.example.springdatajpa.service.Interface;
 
+import java.util.List;
+
 import com.example.springdatajpa.entities.Ticket;
 
 
 public interface ITicketService {
-    Ticket saveTicket(Ticket Ticket);
-    Ticket findByTicketId(int TicketId);
-    Ticket deleteTicket(Ticket Ticket);
-    int deleteTicketByID(int id);
-    Iterable<Ticket> fillAll();
+    List<Ticket> fillAll();
+    Ticket saveTicket(Ticket Ticket, String carId, Integer tripId);
+    Ticket editTicket(Ticket ticket, Integer ticketId, String carId, Integer tripId);
+    void deleteTicket(Integer ticketId);
+    boolean existedById(Integer id);
+
+
 }

@@ -1,47 +1,41 @@
 package com.example.springdatajpa.dto.mapper;
 
-import com.example.springdatajpa.dto.entities.BookOfficeDTO;
-import com.example.springdatajpa.entities.BookingOffice;
+import com.example.springdatajpa.dto.entities.CarDTO;
+import com.example.springdatajpa.entities.Car;
 
-public class BookOfficeMapper {
-    private  static BookOfficeMapper bookOfficeMapper;
+public class CarMapper {
+    private static CarMapper carMapper;
 
-    public static BookOfficeMapper getOfficeMapper() {
-        if (bookOfficeMapper == null) {
-            bookOfficeMapper = new BookOfficeMapper();
+    public static CarMapper getCarMapper() {
+        if (carMapper == null) {
+            carMapper = new CarMapper();
         }
-        return bookOfficeMapper;
+        return carMapper;
     }
-    //Convert DTO into Entity
-    public BookingOffice  toEntity(BookOfficeDTO bookOfficeDTO)
-    {
-        BookingOffice bookingOffice = new BookingOffice();
-        // không muốn lấy id -> tạo thêm contructor>>>>>> CHƯA TẠO CONTRUCTER KO CÓ ID
-        bookingOffice.setOfficeName(bookOfficeDTO.getOfficeName());
-        bookingOffice.setOfficePhone(bookOfficeDTO.getOfficePhone());
-        bookingOffice.setOfficePlace(bookOfficeDTO.getOfficePlace());
 
-        bookingOffice.setOfficePrice(bookOfficeDTO.getOfficePrice());
-        bookingOffice.setEndContractDeadline(bookOfficeDTO.getEndContractDeadline());
-        bookingOffice.setStartContractDeadline(bookOfficeDTO.getStartContractDeadline());
-        
-        return bookingOffice;
+    // Convert DTO into Entity
+    public Car toEntity(CarDTO carDTO) {
+        Car car = new Car();
+        // không muốn lấy id -> tạo thêm contructor>>>>>> CHƯA TẠO CONTRUCTER KO CÓ ID
+        car.setCarColor(carDTO.getCarColor());
+        car.setCarType(carDTO.getCarType());
+        car.setCompany(carDTO.getCompany());
+        car.setLicensePlate(carDTO.getLicensePlate());
+
+        return car;
 
     }
-     //Convert Entity into DTO
-     public BookOfficeDTO  toDTO(BookingOffice bookingOffice)
-    {
-        BookOfficeDTO bookOfficeDTO = new BookOfficeDTO();
-        // không muốn lấy id -> tạo thêm contructor>>>>>> CHƯA TẠO CONTRUCTER KO CÓ ID
-        bookOfficeDTO.setOfficeName(bookingOffice.getOfficeName());
-        bookOfficeDTO.setOfficePhone(bookingOffice.getOfficePhone());
-        bookOfficeDTO.setOfficePlace(bookingOffice.getOfficePlace());
 
-        bookOfficeDTO.setOfficePrice(bookingOffice.getOfficePrice());
-        bookOfficeDTO.setEndContractDeadline(bookingOffice.getEndContractDeadline());
-        bookOfficeDTO.setStartContractDeadline(bookingOffice.getStartContractDeadline());
-        
-        return bookOfficeDTO;
+    // Convert Entity into DTO
+    public CarDTO toDTO(Car Car) {
+        CarDTO carDTO = new CarDTO();
+        // không muốn lấy id -> tạo thêm contructor>>>>>> CHƯA TẠO CONTRUCTER KO CÓ ID
+        carDTO.setCarColor(Car.getCarColor());
+        carDTO.setCarType(Car.getCarType());
+        carDTO.setCompany(Car.getCompany());
+        carDTO.setLicensePlate(Car.getLicensePlate());
+
+        return carDTO;
 
     }
 }

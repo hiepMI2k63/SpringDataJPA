@@ -1,31 +1,43 @@
 package com.example.springdatajpa.entities;
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
-@Entity
+import java.util.Set;
 
+@Entity
+@Table(name = "car")
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private String id;
-
+    @Column(name = "car_id")
+    private String licensePlate;
     private String carColor;
     private String carType;
     private String company;
-   
-    @OneToMany(fetch= FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
-    @JoinColumn(name = "car_id")
-    private List<Ticket> tickets;
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST })
-//    private ParkingLot parkingLot;
+    @OneToMany(mappedBy = "car",cascade = CascadeType.ALL)
+    private Set<Ticket> ticketSet= new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "park_id",referencedColumnName = "park_id")
+    private ParkingLot parkingLot;
 
-    public String getId() {
-        return id;
+    public Car(String licensePlate, String carColor, String carType, String company, Set<Ticket> ticketSet, ParkingLot parkingLot) {
+        this.licensePlate = licensePlate;
+        this.carColor = carColor;
+        this.carType = carType;
+        this.company = company;
+        this.ticketSet = ticketSet;
+        this.parkingLot = parkingLot;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Car() {
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
     public String getCarColor() {
@@ -52,20 +64,19 @@ public class Car {
         this.company = company;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+    public Set<Ticket> getTicketSet() {
+        return ticketSet;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setTicketSet(Set<Ticket> ticketSet) {
+        this.ticketSet = ticketSet;
     }
-//
-//    public ParkingLot getParkingLot() {
-//        return parkingLot;
-//    }
-//
-//    public void setParkingLot(ParkingLot parkingLot) {
-//        this.parkingLot = parkingLot;
-//    }
 
+    public ParkingLot getParkingLot() {
+        return parkingLot;
+    }
+
+    public void setParkingLot(ParkingLot parkingLot) {
+        this.parkingLot = parkingLot;
+    }
 }

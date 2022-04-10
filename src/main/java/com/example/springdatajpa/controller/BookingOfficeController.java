@@ -1,49 +1,41 @@
 package com.example.springdatajpa.controller;
 
+import com.example.springdatajpa.dto.entities.BookOfficeDTO;
+import com.example.springdatajpa.dto.serviceMapper.InterfaceMapper.iBookOfficeServiceMapper;
 import com.example.springdatajpa.entities.BookingOffice;
 import com.example.springdatajpa.service.Interface.IBookingOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 @RestController
-@RequestMapping(value = "/bookingoffice")
+@RequestMapping(value = "api/v1/bookingoffice")
 public class BookingOfficeController {
-    @Autowired
-    private IBookingOfficeService BookingOfficeService;
-    @RequestMapping(value = "/savebookingoffice",method = RequestMethod.POST)
-    @ResponseBody
-    public BookingOffice saveBookingOffice(@RequestBody BookingOffice BookingOffice) {
-        BookingOffice BookingOfficeResponse = BookingOfficeService.saveBookingOffice(BookingOffice);
-        return BookingOfficeResponse;
+
+    private iBookOfficeServiceMapper iBookOfficeServiceMapper;
+
+    public BookingOfficeController(@Lazy iBookOfficeServiceMapper iBookOfficeServiceMapper) {
+        this.iBookOfficeServiceMapper = iBookOfficeServiceMapper;
     }
-    
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    @ResponseBody
-    public BookingOffice updateBookingOffice(@RequestBody BookingOffice BookingOffice) {
-        BookingOffice BookingOfficeResponse = (BookingOffice) BookingOfficeService.saveBookingOffice(BookingOffice);
-        return BookingOfficeResponse;
+    @GetMapping
+    public ResponseEntity<List<BookOfficeDTO>> getAll(BookOfficeDTO bookOfficeDTO) {
+        return new ResponseEntity<>(iBookOfficeServiceMapper.viewBookOffice(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    @ResponseBody
-    public BookingOffice deleteBookingOffice(@RequestBody BookingOffice BookingOffice) {
-        BookingOffice BookingOfficeResponse = (BookingOffice) BookingOfficeService.deleteBookingOffice(BookingOffice);
-        return BookingOfficeResponse;
-    }
-    @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.DELETE)
-    @ResponseBody
-    public Integer deleteBookingOfficeByID(@PathVariable int id) {
-        Integer BookingOfficeResponse =  BookingOfficeService.deleteBookingOfficeByID(id);
-        return BookingOfficeResponse;
-    }
-
-    @RequestMapping(value = "/{BookingOfficeId}",method = RequestMethod.GET)
-    @ResponseBody
-    public BookingOffice getBookingOfficeDetails(@PathVariable int BookingOfficeId) {
-        BookingOffice BookingOfficeResponse = BookingOfficeService.findByBookingOfficeId(BookingOfficeId);
-
-        return BookingOfficeResponse;
-    }
-
+        //add a new booking office API
+        @PostMapping("/{tripId}")
+        private ResponseEntity<BookOfficeDTO> add(@RequestBody BookOfficeDTO bookOfficeDTO,
+                                                @PathVariable Integer tripId) {
+            return new ResponseEntity<>(iBookOfficeServiceMapper.addBookOffice(bookOfficeDTO, tripId),
+                    HttpStatus.CREATED);
+        }
 
 }

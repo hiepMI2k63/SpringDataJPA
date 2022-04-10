@@ -1,11 +1,14 @@
 package com.example.springdatajpa.service.Interface;
 
+import java.util.List;
+
 import com.example.springdatajpa.entities.ParkingLot;
+
 
 public interface IParkingLotService {
     ParkingLot saveParkingLot(ParkingLot ParkingLot);
-    Iterable<ParkingLot> fillAll();
-    ParkingLot findByParkingLotId(int ParkingLotId);
-    ParkingLot deleteParkingLot(ParkingLot ParkingLot);
-    int deleteParkingLotByID(int id);
+    List<ParkingLot> fillAll();
+    ParkingLot editParkLot(ParkingLot parkingLot, Integer ParkId);
+    void deleteParkingLotByID(Integer id);
+    boolean existedById(Integer id);
 }
