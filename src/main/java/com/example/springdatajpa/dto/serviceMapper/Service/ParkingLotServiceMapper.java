@@ -10,7 +10,8 @@ import com.example.springdatajpa.entities.ParkingLot;
 import com.example.springdatajpa.service.ParkingLotService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Component;
+@Component
 public class ParkingLotServiceMapper implements IPackingLotServiceMapper{
 @Autowired
 private ParkingLotService  parkingLotService;

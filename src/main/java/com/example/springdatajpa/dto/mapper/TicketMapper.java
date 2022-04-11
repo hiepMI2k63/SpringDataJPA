@@ -1,9 +1,7 @@
 package com.example.springdatajpa.dto.mapper;
 
 import com.example.springdatajpa.dto.entities.TicketDTO;
-import com.example.springdatajpa.dto.entities.TripDTO;
 import com.example.springdatajpa.entities.Ticket;
-import com.example.springdatajpa.entities.Trip;
 
 public class TicketMapper {
     public static TicketMapper ticketMapper;

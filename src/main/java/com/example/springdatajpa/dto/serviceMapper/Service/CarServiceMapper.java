@@ -4,7 +4,7 @@ import com.example.springdatajpa.dto.entities.BookOfficeDTO;
 import com.example.springdatajpa.dto.entities.CarDTO;
 import com.example.springdatajpa.dto.mapper.BookOfficeMapper;
 import com.example.springdatajpa.dto.mapper.CarMapper;
-import com.example.springdatajpa.dto.serviceMapper.InterfaceMapper.ICarMapper;
+import com.example.springdatajpa.dto.serviceMapper.InterfaceMapper.ICarServiceMapper;
 import com.example.springdatajpa.dto.serviceMapper.InterfaceMapper.iBookOfficeServiceMapper;
 import com.example.springdatajpa.entities.BookingOffice;
 import com.example.springdatajpa.entities.Car;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class CarServiceMapper implements ICarMapper {
+public class CarServiceMapper implements ICarServiceMapper {
  @Autowired
  private ICarService iCarService;
 

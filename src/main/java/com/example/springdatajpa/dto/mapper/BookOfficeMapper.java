@@ -32,7 +32,6 @@ public class BookOfficeMapper {
      public BookOfficeDTO  toDTO(BookingOffice bookingOffice)
     {
         BookOfficeDTO bookOfficeDTO = new BookOfficeDTO();
-        // không muốn lấy id -> tạo thêm contructor>>>>>> CHƯA TẠO CONTRUCTER KO CÓ ID
         bookOfficeDTO.setOfficeName(bookingOffice.getOfficeName());
         bookOfficeDTO.setOfficePhone(bookingOffice.getOfficePhone());
         bookOfficeDTO.setOfficePlace(bookingOffice.getOfficePlace());

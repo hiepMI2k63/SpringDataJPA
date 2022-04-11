@@ -2,9 +2,6 @@ package com.example.springdatajpa.controller;
 
 import com.example.springdatajpa.dto.entities.BookOfficeDTO;
 import com.example.springdatajpa.dto.serviceMapper.InterfaceMapper.iBookOfficeServiceMapper;
-import com.example.springdatajpa.entities.BookingOffice;
-import com.example.springdatajpa.service.Interface.IBookingOfficeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +19,7 @@ public class BookingOfficeController {
 
     private iBookOfficeServiceMapper iBookOfficeServiceMapper;
 
-    public BookingOfficeController(@Lazy iBookOfficeServiceMapper iBookOfficeServiceMapper) {
+    public BookingOfficeController(iBookOfficeServiceMapper iBookOfficeServiceMapper) {
         this.iBookOfficeServiceMapper = iBookOfficeServiceMapper;
     }
     @GetMapping
@@ -37,5 +34,4 @@ public class BookingOfficeController {
             return new ResponseEntity<>(iBookOfficeServiceMapper.addBookOffice(bookOfficeDTO, tripId),
                     HttpStatus.CREATED);
         }
-
 }

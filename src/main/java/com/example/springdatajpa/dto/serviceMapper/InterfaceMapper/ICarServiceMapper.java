@@ -4,7 +4,7 @@ import com.example.springdatajpa.dto.entities.CarDTO;
 
 import java.util.List;
 
-public interface ICarMapper {
+public interface ICarServiceMapper {
     List<CarDTO> viewCar();
     CarDTO addCar(CarDTO carDTO, Integer tripId);
     CarDTO editCar(CarDTO carDTO, Integer officeId, Integer tripId);
